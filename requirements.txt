@@ -1,3 +1,4 @@
 pycairo
 webcolors
 requests
+qrcode[pil]

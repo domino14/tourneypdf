@@ -6,12 +6,18 @@ import json
 def get_tournament(id):
     print("get tourney with id", id)
     url = "https://woogles.io/twirp/tournament_service.TournamentService/GetTournament"
-    res = requests.post(
+    t = requests.post(
         url,
         headers={"content-type": "application/json"},
         data=json.dumps({"id": id}),
     )
-    return res.json()
+    url = "https://woogles.io/twirp/tournament_service.TournamentService/GetTournamentMetadata"
+    tm = requests.post(
+        url,
+        headers={"content-type": "application/json"},
+        data=json.dumps({"id": id}),
+    )
+    return {"t": t.json(), "meta": tm.json()}
 
 
 def player_by_idx(tourney, div, idx):
