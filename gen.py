@@ -59,9 +59,6 @@ def create_simple_qr(data, error_correction=qrcode.constants.ERROR_CORRECT_L):
     return img
 
 
-# 8.5 x 11 inches in points (612 x 792)
-
-
 def place_qr_code(ctx, url):
     qrcode_urls.add(url)
     qrcode_img = create_simple_qr(url)
@@ -152,10 +149,28 @@ def draw_row(ctx, i, rect_ht, nrounds, fields):
     ctx.set_font_size(8)
     ctx.show_text("1st        2nd")
 
-    for f in fields[1:]:
+    last_field = len(fields)
+    if i != 0:
+        last_field = len(fields) - 1
+
+    for f in fields[1:last_field]:
         ctx.move_to(f[0] - 5, 100 + (i * rect_ht))  # 340 to 380 at end
         ctx.line_to(f[0] - 5, 100 + (i * rect_ht) + rect_ht)
         ctx.stroke()
+    # Deal with spread box.
+    if i > 0:
+        f = fields[last_field]
+        ctx.move_to(f[0] - 5, 100 + (i * rect_ht))
+        ctx.line_to(f[0] - 5, 100 + (i * rect_ht) + rect_ht / 2)
+        ctx.stroke()
+        ctx.move_to(fields[last_field - 1][0] - 5, 100 + (i * rect_ht) + rect_ht / 2)
+        ctx.line_to(560, 100 + (i * rect_ht) + rect_ht / 2)
+        ctx.stroke()
+        ctx.move_to(
+            fields[last_field - 1][0] - 2, 100 + (i * rect_ht) + 7 * (rect_ht / 8)
+        )
+        ctx.set_font_size(12)
+        ctx.show_text("Cumulative:")
 
 
 def gen_single_player_scorecard(ctx, div, nrounds, meta, pidx, show_opponents):
@@ -207,6 +222,7 @@ def gen_scorecard(div, nrounds, meta, p1, p2, show_opponents):
     if p1 == p2:
         fname = f"{divname}{p1+1}.pdf"
 
+    # 8.5 x 11 inches in points (612 x 792)
     surface = cairo.PDFSurface(fname, 612, 792)
     ctx = cairo.Context(surface)
 
@@ -233,7 +249,7 @@ def gen_scorecards(tourney, show_opponents):
             skip = 2
         else:
             skip = 1
-        # nrounds = 7
+        # nrounds = 8
         for i in range(0, len(div["players"]["persons"]), skip):
             gen_scorecard(
                 div, nrounds, tourney["meta"], i, i + skip - 1, show_opponents
