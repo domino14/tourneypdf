@@ -118,10 +118,13 @@ def draw_known_pairings(ctx, div, pidx, rect_ht, nrounds):
     for k, v in div["pairing_map"].items():
         if pidx in v["players"]:
             rd = v["round"]
-            for i in v["players"]:
-                if i != pidx:
-                    opp = i
+            first = True
+            for place, pairedidx in enumerate(v["players"]):
+                if pairedidx != pidx:
+                    opp = pairedidx
                     opp_name = div["players"]["persons"][opp]["id"].split(":")[1]
+                    if place == 0:
+                        first = False
             rdY = 125 + (rd * rect_ht) - (2 if nrounds == 8 else 0)
             rdX = 97
             if len(str(opp + 1)) > 1:
@@ -130,6 +133,14 @@ def draw_known_pairings(ctx, div, pidx, rect_ht, nrounds):
             ctx.show_text(str(opp + 1))
             ctx.move_to(140, rdY)
             ctx.show_text(opp_name)
+            # Circle 1st or 2nd
+            y = 130 + (rd * rect_ht) + (5 if nrounds == 7 else 0) - 2
+            ctx.new_sub_path()
+            if first:
+                ctx.arc(40, y, 8, 0, 2 * math.pi)
+            else:
+                ctx.arc(70, y, 8, 0, 2 * math.pi)
+            ctx.stroke()
     ctx.new_path()
 
 
@@ -192,11 +203,11 @@ def gen_single_player_scorecard(ctx, div, nrounds, meta, pidx, show_opponents):
     fields = [
         (35, "Round"),
         (85, "Opponent"),
-        (300, "Wins"),
-        (335, "Losses"),
-        (380, "Your Score"),
-        (450, "Opp Score"),
-        (515, "Spread"),
+        (300, "Won"),
+        (335, "Lost"),
+        (370, "Your Score"),
+        (440, "Opp Score"),
+        (510, "Spread"),
     ]
 
     for field in fields:
