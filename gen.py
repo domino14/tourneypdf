@@ -103,6 +103,9 @@ def draw_name_and_tourney_header(ctx, player, pidx, tourney_name):
     ctx.move_to(360, 56)
     ctx.show_text(tourney_name)
 
+    ctx.move_to(225, 75)
+    ctx.set_font_size(12)
+    ctx.show_text("Enter scores and view standings (scan with phone):")
     # line for player and name
     ctx.set_font_size(20)
     ctx.move_to(80, 56)
@@ -216,28 +219,20 @@ def gen_single_player_scorecard(ctx, div, nrounds, meta, pidx, show_opponents):
         draw_known_pairings(ctx, div, pidx, rect_ht, nrounds)
 
 
-def gen_scorecard(div, nrounds, meta, p1, p2, show_opponents):
-    divname = div["division"]
-    fname = f"{divname}{p1+1}-{p2+1}.pdf"
-    if p1 == p2:
-        fname = f"{divname}{p1+1}.pdf"
-
-    # 8.5 x 11 inches in points (612 x 792)
-    surface = cairo.PDFSurface(fname, 612, 792)
-    ctx = cairo.Context(surface)
-
+def gen_scorecard(surface, ctx, div, nrounds, meta, p1, p2, show_opponents):
     if p1 != p2:
         for idx, pidx in enumerate([p1, p2]):
             ctx.save()
             ctx.translate(0, idx * 396)
             gen_single_player_scorecard(ctx, div, nrounds, meta, pidx, show_opponents)
             ctx.restore()
-
+        surface.show_page()  # Add a new page for the next scorecard
     else:
         ctx.save()
         ctx.translate(0, 200)
         gen_single_player_scorecard(ctx, div, nrounds, meta, p1, show_opponents)
         ctx.restore()
+        surface.show_page()  # Add a new page for the next scorecard
 
     surface.flush()
 
@@ -245,22 +240,24 @@ def gen_scorecard(div, nrounds, meta, p1, p2, show_opponents):
 def gen_scorecards(tourney, show_opponents):
     for divname, div in tourney["t"]["divisions"].items():
         nrounds = len(div["round_controls"])
-        if nrounds <= 8:
-            skip = 2
-        else:
-            skip = 1
-        # nrounds = 8
+        skip = 2 if nrounds <= 8 else 1
+        fname = f"{divname}_scorecards.pdf"
+        # 8.5 x 11 inches in points (612 x 792)
+        surface = cairo.PDFSurface(fname, 612, 792)
+        ctx = cairo.Context(surface)
+
         for i in range(0, len(div["players"]["persons"]), skip):
             gen_scorecard(
-                div, nrounds, tourney["meta"], i, i + skip - 1, show_opponents
+                surface,
+                ctx,
+                div,
+                nrounds,
+                tourney["meta"],
+                i,
+                i + skip - 1,
+                show_opponents,
             )
-
-    # ctx.rectangle(200, 100, 50, 50)  # x y w h
-    # second_color = format_color("black")
-    # ctx.set_line_width(3)
-    # ctx.set_source_rgba(*second_color)
-    # ctx.stroke()
-    # surface.flush()
+        surface.finish()
 
 
 if __name__ == "__main__":
