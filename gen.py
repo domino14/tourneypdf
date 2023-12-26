@@ -62,13 +62,9 @@ def create_simple_qr(data, error_correction=qrcode.constants.ERROR_CORRECT_L):
 # 8.5 x 11 inches in points (612 x 792)
 
 
-def gen_single_player_scorecard(ctx, yoffset, div, nrounds, meta, pidx, show_opponents):
-    idtrunc = div["players"]["persons"][pidx]["id"][:url_uniqueness_trunc]
-    qrcode_url = f"https://woogles.io{meta['metadata']['slug']}/{idtrunc}"
-    if qrcode_url in qrcode_urls:
-        raise Exception("url not unique")
-    qrcode_urls.add(qrcode_url)
-    qrcode_img = create_simple_qr(qrcode_url)
+def place_qr_code(ctx, url):
+    qrcode_urls.add(url)
+    qrcode_img = create_simple_qr(url)
     # Convert QR code to 'RGBA' format
     qr_rgba = qrcode_img.convert("RGBA")
 
@@ -79,14 +75,15 @@ def gen_single_player_scorecard(ctx, yoffset, div, nrounds, meta, pidx, show_opp
     )
 
     ctx.save()
-    ctx.translate(480, yoffset + 10)
+    ctx.translate(495, 10)
     ctx.scale(0.20, 0.20)
 
     ctx.set_source_surface(qrsurface, 0, 0)
     ctx.paint()
     ctx.restore()
 
-    player = div["players"]["persons"][pidx]
+
+def draw_name_and_tourney_header(ctx, player, pidx, tourney_name):
     player_name = player["id"].split(":")[1]
     player_rating = player["rating"]
 
@@ -95,7 +92,7 @@ def gen_single_player_scorecard(ctx, yoffset, div, nrounds, meta, pidx, show_opp
     ctx.set_font_size(20)
     ctx.select_font_face("Arial", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
     # circle with number
-    ctx.arc(50, yoffset + 50, 25, 0, 2 * math.pi)
+    ctx.arc(50, 50, 25, 0, 2 * math.pi)
     ctx.set_line_width(1)
     ctx.set_source_rgba(*black)
     ctx.stroke()
@@ -103,94 +100,108 @@ def gen_single_player_scorecard(ctx, yoffset, div, nrounds, meta, pidx, show_opp
     xidx = 45
     if len(str(pidx + 1)) > 1:
         xidx = 40
-    ctx.move_to(xidx, yoffset + 56)
+    ctx.move_to(xidx, 56)
     ctx.show_text(str(pidx + 1))
 
-    ctx.move_to(360, yoffset + 56)
-    ctx.show_text(meta["metadata"]["name"])
+    ctx.move_to(360, 56)
+    ctx.show_text(tourney_name)
 
     # line for player and name
-    ctx.set_font_size(12)
-    ctx.move_to(80, yoffset + 45)
-    ctx.line_to(200, yoffset + 45)
-    ctx.stroke()
-
-    ctx.move_to(80, yoffset + 40)
+    ctx.set_font_size(20)
+    ctx.move_to(80, 56)
     ctx.show_text(f"{player_name}  ({player_rating})")
+    ctx.set_font_size(12)
+
+
+def draw_known_pairings(ctx, div, pidx, rect_ht, nrounds):
+    ctx.set_font_size(12)
+    for k, v in div["pairing_map"].items():
+        if pidx in v["players"]:
+            rd = v["round"]
+            for i in v["players"]:
+                if i != pidx:
+                    opp = i
+                    opp_name = div["players"]["persons"][opp]["id"].split(":")[1]
+            rdY = 125 + (rd * rect_ht) - (2 if nrounds == 8 else 0)
+            rdX = 97
+            if len(str(opp + 1)) > 1:
+                rdX = 93
+            ctx.move_to(rdX, rdY)
+            ctx.show_text(str(opp + 1))
+            ctx.move_to(140, rdY)
+            ctx.show_text(opp_name)
+    ctx.new_path()
+
+
+def draw_row(ctx, i, rect_ht, nrounds, fields):
+    ctx.rectangle(25, 100 + (i * rect_ht), 535, rect_ht)
+    ctx.stroke()
+    ctx.arc(  # circle around player's number
+        100,
+        100 + (i * rect_ht) + (rect_ht / 2),
+        (rect_ht - 4) / 2,
+        0,
+        2 * math.pi,
+    )
+    ctx.stroke()
+    ctx.set_font_size(18)
+
+    ctx.move_to(50, 125 + (i * rect_ht))
+    ctx.show_text(str(i + 1))
+    ctx.move_to(35, 130 + (i * rect_ht) + (5 if nrounds == 7 else 0))
+    ctx.set_font_size(8)
+    ctx.show_text("1st        2nd")
+
+    for f in fields[1:]:
+        ctx.move_to(f[0] - 5, 100 + (i * rect_ht))  # 340 to 380 at end
+        ctx.line_to(f[0] - 5, 100 + (i * rect_ht) + rect_ht)
+        ctx.stroke()
+
+
+def gen_single_player_scorecard(ctx, div, nrounds, meta, pidx, show_opponents):
+    player = div["players"]["persons"][pidx]
+    idtrunc = player["id"][:url_uniqueness_trunc]
+    qrcode_url = f"https://woogles.io{meta['metadata']['slug']}?es={idtrunc}"
+    if qrcode_url in qrcode_urls:
+        raise Exception("url not unique")
+    place_qr_code(ctx, qrcode_url)
+    draw_name_and_tourney_header(ctx, player, pidx, meta["metadata"]["name"])
 
     # header row
-    ctx.rectangle(25, yoffset + 80, 535, 20)
+    ctx.rectangle(25, 80, 535, 20)
     ctx.stroke()
-    xs = [85, 300, 335, 380, 450, 515]
 
-    ctx.move_to(35, yoffset + 95)
-    ctx.show_text("Round")
-    ctx.move_to(85, yoffset + 95)
-    ctx.show_text("Opponent")
-    ctx.move_to(300, yoffset + 95)
-    ctx.show_text("Wins")
-    ctx.move_to(335, yoffset + 95)
-    ctx.show_text("Losses")
-    ctx.move_to(380, yoffset + 95)
-    ctx.show_text("Your Score")
-    ctx.move_to(450, yoffset + 95)
-    ctx.show_text("Opp Score")
-    ctx.move_to(515, yoffset + 95)
-    ctx.show_text("Spread")
+    fields = [
+        (35, "Round"),
+        (85, "Opponent"),
+        (300, "Wins"),
+        (335, "Losses"),
+        (380, "Your Score"),
+        (450, "Opp Score"),
+        (515, "Spread"),
+    ]
+
+    for field in fields:
+        ctx.move_to(field[0], 95)
+        ctx.show_text(field[1])
+
     # header lines
-    for x in xs:
-        ctx.move_to(x - 5, yoffset + 80)
-        ctx.line_to(x - 5, yoffset + 100)
+    for f in fields[1:]:
+        ctx.move_to(f[0] - 5, 80)
+        ctx.line_to(f[0] - 5, 100)
 
     rect_ht = 40
     if nrounds == 8:
         rect_ht = 35
     for i in range(nrounds):
-        ctx.rectangle(25, yoffset + 100 + (i * rect_ht), 535, rect_ht)
-        ctx.stroke()
-        ctx.arc(  # circle around player's number
-            100,
-            yoffset + 100 + (i * rect_ht) + (rect_ht / 2),
-            (rect_ht - 4) / 2,
-            0,
-            2 * math.pi,
-        )
-        ctx.stroke()
-        ctx.set_font_size(18)
+        draw_row(ctx, i, rect_ht, nrounds, fields)
 
-        ctx.move_to(50, yoffset + 125 + (i * rect_ht))
-        ctx.show_text(str(i + 1))
-        ctx.move_to(35, yoffset + 130 + (i * rect_ht) + (5 if nrounds == 7 else 0))
-        ctx.set_font_size(8)
-        ctx.show_text("1st        2nd")
-
-        for x in xs:
-            ctx.move_to(x - 5, yoffset + 100 + (i * rect_ht))  # 340 to 380 at end
-            ctx.line_to(x - 5, yoffset + 100 + (i * rect_ht) + rect_ht)
-            ctx.stroke()
     # Draw known pairings
     if show_opponents:
-        ctx.set_font_size(12)
-        for k, v in div["pairing_map"].items():
-            if pidx in v["players"]:
-                rd = v["round"]
-                for i in v["players"]:
-                    if i != pidx:
-                        opp = i
-                        opp_name = div["players"]["persons"][opp]["id"].split(":")[1]
-                rdY = yoffset + 125 + (rd * rect_ht) - (2 if nrounds == 8 else 0)
-                rdX = 97
-                if len(str(opp + 1)) > 1:
-                    rdX = 93
-                ctx.move_to(rdX, rdY)
-                ctx.show_text(str(opp + 1))
-                ctx.move_to(140, rdY)
-                ctx.show_text(opp_name)
-        ctx.new_path()
+        draw_known_pairings(ctx, div, pidx, rect_ht, nrounds)
 
 
 def gen_scorecard(div, nrounds, meta, p1, p2, show_opponents):
-    yoffset = 0
     divname = div["division"]
     fname = f"{divname}{p1+1}-{p2+1}.pdf"
     if p1 == p2:
@@ -201,17 +212,16 @@ def gen_scorecard(div, nrounds, meta, p1, p2, show_opponents):
 
     if p1 != p2:
         for idx, pidx in enumerate([p1, p2]):
-            yoffset = idx * 396
-
-            gen_single_player_scorecard(
-                ctx, yoffset, div, nrounds, meta, pidx, show_opponents
-            )
+            ctx.save()
+            ctx.translate(0, idx * 396)
+            gen_single_player_scorecard(ctx, div, nrounds, meta, pidx, show_opponents)
+            ctx.restore()
 
     else:
-        yoffset = 200
-        gen_single_player_scorecard(
-            ctx, yoffset, div, nrounds, meta, p1, show_opponents
-        )
+        ctx.save()
+        ctx.translate(0, 200)
+        gen_single_player_scorecard(ctx, div, nrounds, meta, p1, show_opponents)
+        ctx.restore()
 
     surface.flush()
 
