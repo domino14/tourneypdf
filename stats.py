@@ -38,4 +38,4 @@ if __name__ == "__main__":
     tid = sys.argv[1]
     div = sys.argv[2]
     tourney = get_tournament(tid)
-    stats(tourney, div)
+    stats(tourney['t'], div)
