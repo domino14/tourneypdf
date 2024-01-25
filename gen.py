@@ -61,10 +61,13 @@ def create_simple_qr(data, error_correction=qrcode.constants.ERROR_CORRECT_L):
 
 
 class ScorecardCreator:
-    def __init__(self, tourney, show_opponents: bool, show_seeds: bool):
+    def __init__(
+        self, tourney, show_opponents: bool, show_seeds: bool, show_qrcode: bool
+    ):
         self.tourney = tourney
         self.show_opponents = show_opponents
         self.show_seeds = show_seeds
+        self.show_qrcode = show_qrcode
         self.url_uniqueness_trunc = 2
         self.qrcode_urls = set()
 
@@ -117,13 +120,17 @@ class ScorecardCreator:
             ctx.move_to(xidx, 56)
             ctx.show_text(str(pidx + 1))
             player_name_x = 80
-
-        ctx.move_to(360, 56)
+        if len(tourney_name) > 10:
+            ctx.set_font_size(12)
+            ctx.move_to(player_name_x, 76)
+        else:
+            ctx.move_to(360, 56)
         ctx.show_text(tourney_name)
 
-        ctx.move_to(225, 75)
-        ctx.set_font_size(12)
-        ctx.show_text("Enter scores and view standings (scan with phone):")
+        if self.show_qrcode:
+            ctx.move_to(320, 75)
+            ctx.set_font_size(12)
+            ctx.show_text("Enter scores and view standings:")
         # line for player and name
         ctx.set_font_size(20)
         ctx.move_to(player_name_x, 56)
@@ -184,7 +191,10 @@ class ScorecardCreator:
 
         # Round number
         ctx.set_font_size(18)
-        ctx.move_to(50, 125 + (i * rect_ht))
+        if (i + 1) >= 10:  # If it's two digits move it left a lil.
+            ctx.move_to(45, 125 + (i * rect_ht))
+        else:
+            ctx.move_to(50, 125 + (i * rect_ht))
         ctx.show_text(str(i + 1))
         ctx.move_to(35, 130 + (i * rect_ht) + (5 if nrounds == 7 else 0))
         ctx.set_font_size(8)
@@ -217,11 +227,12 @@ class ScorecardCreator:
 
     def gen_single_player_scorecard(self, ctx, div, nrounds, meta, pidx):
         player = div["players"]["persons"][pidx]
-        idtrunc = player["id"][: self.url_uniqueness_trunc]
-        qrcode_url = f"https://woogles.io{meta['metadata']['slug']}?es={idtrunc}"
-        if qrcode_url in self.qrcode_urls:
-            raise URLNotUniqueException()
-        self.place_qr_code(ctx, qrcode_url)
+        if self.show_qrcode:
+            idtrunc = player["id"][: self.url_uniqueness_trunc]
+            qrcode_url = f"https://woogles.io{meta['metadata']['slug']}?es={idtrunc}"
+            if qrcode_url in self.qrcode_urls:
+                raise URLNotUniqueException()
+            self.place_qr_code(ctx, qrcode_url)
         self.draw_name_and_tourney_header(ctx, player, pidx, meta["metadata"]["name"])
 
         # header row
@@ -266,10 +277,7 @@ class ScorecardCreator:
                 ctx.restore()
             surface.show_page()  # Add a new page for the next scorecard
         else:
-            ctx.save()
-            ctx.translate(0, 200)
             self.gen_single_player_scorecard(ctx, div, nrounds, meta, p1)
-            ctx.restore()
             surface.show_page()  # Add a new page for the next scorecard
 
         surface.flush()
@@ -322,6 +330,9 @@ def main():
         action="store_true",
         help="Show player numbers/seeds on scorecard",
     )
+    parser.add_argument(
+        "-q", "--qrcode", action="store_true", help="Show QR code on scorecard"
+    )
     args = parser.parse_args()
 
     tid = args.tid_or_file
@@ -331,7 +342,7 @@ def main():
     else:
         tourney = get_tournament(tid)
     # print(json.dumps(tourney))
-    creator = ScorecardCreator(tourney, args.opponents, args.seeds)
+    creator = ScorecardCreator(tourney, args.opponents, args.seeds, args.qrcode)
     success = False
     while success is False:
         try:
