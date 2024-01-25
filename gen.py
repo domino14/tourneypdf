@@ -136,12 +136,18 @@ class ScorecardCreator:
             if pidx in v["players"]:
                 rd = v["round"]
                 first = True
+                opp = None
+                opp_name = None
                 for place, pairedidx in enumerate(v["players"]):
                     if pairedidx != pidx:
                         opp = pairedidx
                         opp_name = div["players"]["persons"][opp]["id"].split(":")[1]
                         if place == 0:
                             first = False
+                if opp is None:
+                    # self-pairing
+                    opp = pidx
+                    opp_name = v["outcomes"][0].title()
                 rdY = 125 + (rd * rect_ht) - (2 if nrounds == 8 else 0)
                 rdX = 97
                 if len(str(opp + 1)) > 1:
@@ -278,6 +284,9 @@ class ScorecardCreator:
             ctx = cairo.Context(surface)
 
             for i in range(0, len(div["players"]["persons"]), skip):
+                end = i + skip - 1
+                if end > len(div["players"]["persons"]) - 1:
+                    end = i
                 self.gen_scorecard(
                     surface,
                     ctx,
@@ -285,7 +294,7 @@ class ScorecardCreator:
                     nrounds,
                     self.tourney["meta"],
                     i,
-                    i + skip - 1,
+                    end,
                 )
             surface.finish()
 

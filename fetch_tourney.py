@@ -17,6 +17,7 @@ def get_tournament(id):
         headers={"content-type": "application/json"},
         data=json.dumps({"id": id}),
     )
+    # print(json.dumps(t.json()))
     return {"t": t.json(), "meta": tm.json()}
 
 
