@@ -1,0 +1,1644 @@
+{
+    "divisions": {
+        "NWL": {
+            "id": "yAy9RjwQz6CkmFwBYThZ85",
+            "division": "NWL",
+            "players": {
+                "id": "",
+                "division": "",
+                "persons": [
+                    {
+                        "id": "b02a32ac379e4a5ba16d223aab219623:Cesar Del Solar",
+                        "rating": 2005,
+                        "suspended": false
+                    },
+                    {
+                        "id": "13d6589da21f3fee272c93a5b49ee262:Jay Levin",
+                        "rating": 1613,
+                        "suspended": false
+                    },
+                    {
+                        "id": "0af6e95ec7d7bdc2167a9ce4225ccbcb:Jeremy Frank",
+                        "rating": 1609,
+                        "suspended": false
+                    },
+                    {
+                        "id": "622ea60f437463901c42a7ba06f66632:Edward Zurav",
+                        "rating": 1534,
+                        "suspended": false
+                    },
+                    {
+                        "id": "0c80fd13351f85a1b7f5cb3d47d50972:Kristian Dietz",
+                        "rating": 1415,
+                        "suspended": false
+                    },
+                    {
+                        "id": "edafc0e29dd6e276c291aefb3823c5e2:Heidi Kujac",
+                        "rating": 1320,
+                        "suspended": false
+                    },
+                    {
+                        "id": "7ae00cb4a3674fcc1d0af3aad2ef77fa:Marian Calabro",
+                        "rating": 1252,
+                        "suspended": false
+                    },
+                    {
+                        "id": "9fd33f2879d0ba3382d8b51ca8d51a68:Joshua Pepper",
+                        "rating": 1237,
+                        "suspended": false
+                    },
+                    {
+                        "id": "b442a22f86126bbe1386078d143c116a:Jim Fonti",
+                        "rating": 1236,
+                        "suspended": false
+                    },
+                    {
+                        "id": "017c08c35312bf2225e9682310fdea37:Frances Shaw",
+                        "rating": 1194,
+                        "suspended": false
+                    }
+                ]
+            },
+            "standings": {
+                "0": {
+                    "standings": [
+                        {
+                            "player_id": "b02a32ac379e4a5ba16d223aab219623:Cesar Del Solar",
+                            "wins": 1,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 278,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0c80fd13351f85a1b7f5cb3d47d50972:Kristian Dietz",
+                            "wins": 1,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 99,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "13d6589da21f3fee272c93a5b49ee262:Jay Levin",
+                            "wins": 1,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 86,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0af6e95ec7d7bdc2167a9ce4225ccbcb:Jeremy Frank",
+                            "wins": 1,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 49,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "7ae00cb4a3674fcc1d0af3aad2ef77fa:Marian Calabro",
+                            "wins": 1,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 22,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "622ea60f437463901c42a7ba06f66632:Edward Zurav",
+                            "wins": 0,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": -22,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "9fd33f2879d0ba3382d8b51ca8d51a68:Joshua Pepper",
+                            "wins": 0,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": -49,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "b442a22f86126bbe1386078d143c116a:Jim Fonti",
+                            "wins": 0,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": -86,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "edafc0e29dd6e276c291aefb3823c5e2:Heidi Kujac",
+                            "wins": 0,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": -99,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "017c08c35312bf2225e9682310fdea37:Frances Shaw",
+                            "wins": 0,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": -278,
+                            "gibsonized": false
+                        }
+                    ]
+                },
+                "1": {
+                    "standings": [
+                        {
+                            "player_id": "b02a32ac379e4a5ba16d223aab219623:Cesar Del Solar",
+                            "wins": 2,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 470,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "13d6589da21f3fee272c93a5b49ee262:Jay Levin",
+                            "wins": 2,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 166,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "7ae00cb4a3674fcc1d0af3aad2ef77fa:Marian Calabro",
+                            "wins": 2,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 60,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "622ea60f437463901c42a7ba06f66632:Edward Zurav",
+                            "wins": 1,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": 44,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0c80fd13351f85a1b7f5cb3d47d50972:Kristian Dietz",
+                            "wins": 1,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": 19,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0af6e95ec7d7bdc2167a9ce4225ccbcb:Jeremy Frank",
+                            "wins": 1,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": -17,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "b442a22f86126bbe1386078d143c116a:Jim Fonti",
+                            "wins": 1,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": -75,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "9fd33f2879d0ba3382d8b51ca8d51a68:Joshua Pepper",
+                            "wins": 0,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": -60,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "edafc0e29dd6e276c291aefb3823c5e2:Heidi Kujac",
+                            "wins": 0,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": -291,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "017c08c35312bf2225e9682310fdea37:Frances Shaw",
+                            "wins": 0,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": -316,
+                            "gibsonized": false
+                        }
+                    ]
+                },
+                "2": {
+                    "standings": [
+                        {
+                            "player_id": "b02a32ac379e4a5ba16d223aab219623:Cesar Del Solar",
+                            "wins": 3,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 524,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "7ae00cb4a3674fcc1d0af3aad2ef77fa:Marian Calabro",
+                            "wins": 3,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 150,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "13d6589da21f3fee272c93a5b49ee262:Jay Levin",
+                            "wins": 2,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": 112,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "622ea60f437463901c42a7ba06f66632:Edward Zurav",
+                            "wins": 2,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": 87,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0c80fd13351f85a1b7f5cb3d47d50972:Kristian Dietz",
+                            "wins": 2,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": 68,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0af6e95ec7d7bdc2167a9ce4225ccbcb:Jeremy Frank",
+                            "wins": 2,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": 45,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "b442a22f86126bbe1386078d143c116a:Jim Fonti",
+                            "wins": 1,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": -118,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "9fd33f2879d0ba3382d8b51ca8d51a68:Joshua Pepper",
+                            "wins": 0,
+                            "losses": 3,
+                            "draws": 0,
+                            "spread": -109,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "017c08c35312bf2225e9682310fdea37:Frances Shaw",
+                            "wins": 0,
+                            "losses": 3,
+                            "draws": 0,
+                            "spread": -378,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "edafc0e29dd6e276c291aefb3823c5e2:Heidi Kujac",
+                            "wins": 0,
+                            "losses": 3,
+                            "draws": 0,
+                            "spread": -381,
+                            "gibsonized": false
+                        }
+                    ]
+                },
+                "3": {
+                    "standings": [
+                        {
+                            "player_id": "b02a32ac379e4a5ba16d223aab219623:Cesar Del Solar",
+                            "wins": 4,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 686,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "7ae00cb4a3674fcc1d0af3aad2ef77fa:Marian Calabro",
+                            "wins": 4,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 258,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0af6e95ec7d7bdc2167a9ce4225ccbcb:Jeremy Frank",
+                            "wins": 3,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": 200,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "622ea60f437463901c42a7ba06f66632:Edward Zurav",
+                            "wins": 3,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": 163,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "13d6589da21f3fee272c93a5b49ee262:Jay Levin",
+                            "wins": 2,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": 4,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0c80fd13351f85a1b7f5cb3d47d50972:Kristian Dietz",
+                            "wins": 2,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": -8,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "b442a22f86126bbe1386078d143c116a:Jim Fonti",
+                            "wins": 2,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": -47,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "9fd33f2879d0ba3382d8b51ca8d51a68:Joshua Pepper",
+                            "wins": 0,
+                            "losses": 4,
+                            "draws": 0,
+                            "spread": -271,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "017c08c35312bf2225e9682310fdea37:Frances Shaw",
+                            "wins": 0,
+                            "losses": 4,
+                            "draws": 0,
+                            "spread": -449,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "edafc0e29dd6e276c291aefb3823c5e2:Heidi Kujac",
+                            "wins": 0,
+                            "losses": 4,
+                            "draws": 0,
+                            "spread": -536,
+                            "gibsonized": false
+                        }
+                    ]
+                },
+                "4": {
+                    "standings": [
+                        {
+                            "player_id": "b02a32ac379e4a5ba16d223aab219623:Cesar Del Solar",
+                            "wins": 5,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 748,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "7ae00cb4a3674fcc1d0af3aad2ef77fa:Marian Calabro",
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": 240,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "13d6589da21f3fee272c93a5b49ee262:Jay Levin",
+                            "wins": 3,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": 173,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "622ea60f437463901c42a7ba06f66632:Edward Zurav",
+                            "wins": 3,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": 101,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0af6e95ec7d7bdc2167a9ce4225ccbcb:Jeremy Frank",
+                            "wins": 3,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": 31,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0c80fd13351f85a1b7f5cb3d47d50972:Kristian Dietz",
+                            "wins": 3,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": 28,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "b442a22f86126bbe1386078d143c116a:Jim Fonti",
+                            "wins": 3,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": -23,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "9fd33f2879d0ba3382d8b51ca8d51a68:Joshua Pepper",
+                            "wins": 1,
+                            "losses": 4,
+                            "draws": 0,
+                            "spread": -253,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "017c08c35312bf2225e9682310fdea37:Frances Shaw",
+                            "wins": 0,
+                            "losses": 5,
+                            "draws": 0,
+                            "spread": -485,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "edafc0e29dd6e276c291aefb3823c5e2:Heidi Kujac",
+                            "wins": 0,
+                            "losses": 5,
+                            "draws": 0,
+                            "spread": -560,
+                            "gibsonized": false
+                        }
+                    ]
+                },
+                "5": {
+                    "standings": [
+                        {
+                            "player_id": "b02a32ac379e4a5ba16d223aab219623:Cesar Del Solar",
+                            "wins": 6,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 854,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "7ae00cb4a3674fcc1d0af3aad2ef77fa:Marian Calabro",
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": 240,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "622ea60f437463901c42a7ba06f66632:Edward Zurav",
+                            "wins": 3,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": 101,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0af6e95ec7d7bdc2167a9ce4225ccbcb:Jeremy Frank",
+                            "wins": 3,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": 31,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0c80fd13351f85a1b7f5cb3d47d50972:Kristian Dietz",
+                            "wins": 3,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": 28,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "b442a22f86126bbe1386078d143c116a:Jim Fonti",
+                            "wins": 3,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": -23,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "13d6589da21f3fee272c93a5b49ee262:Jay Levin",
+                            "wins": 3,
+                            "losses": 3,
+                            "draws": 0,
+                            "spread": 67,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "9fd33f2879d0ba3382d8b51ca8d51a68:Joshua Pepper",
+                            "wins": 1,
+                            "losses": 4,
+                            "draws": 0,
+                            "spread": -253,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "017c08c35312bf2225e9682310fdea37:Frances Shaw",
+                            "wins": 0,
+                            "losses": 5,
+                            "draws": 0,
+                            "spread": -485,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "edafc0e29dd6e276c291aefb3823c5e2:Heidi Kujac",
+                            "wins": 0,
+                            "losses": 5,
+                            "draws": 0,
+                            "spread": -560,
+                            "gibsonized": false
+                        }
+                    ]
+                },
+                "6": {
+                    "standings": [
+                        {
+                            "player_id": "b02a32ac379e4a5ba16d223aab219623:Cesar Del Solar",
+                            "wins": 6,
+                            "losses": 0,
+                            "draws": 0,
+                            "spread": 854,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "7ae00cb4a3674fcc1d0af3aad2ef77fa:Marian Calabro",
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 0,
+                            "spread": 240,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "622ea60f437463901c42a7ba06f66632:Edward Zurav",
+                            "wins": 3,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": 101,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0af6e95ec7d7bdc2167a9ce4225ccbcb:Jeremy Frank",
+                            "wins": 3,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": 31,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "0c80fd13351f85a1b7f5cb3d47d50972:Kristian Dietz",
+                            "wins": 3,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": 28,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "b442a22f86126bbe1386078d143c116a:Jim Fonti",
+                            "wins": 3,
+                            "losses": 2,
+                            "draws": 0,
+                            "spread": -23,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "13d6589da21f3fee272c93a5b49ee262:Jay Levin",
+                            "wins": 3,
+                            "losses": 3,
+                            "draws": 0,
+                            "spread": 67,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "9fd33f2879d0ba3382d8b51ca8d51a68:Joshua Pepper",
+                            "wins": 1,
+                            "losses": 4,
+                            "draws": 0,
+                            "spread": -253,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "017c08c35312bf2225e9682310fdea37:Frances Shaw",
+                            "wins": 0,
+                            "losses": 5,
+                            "draws": 0,
+                            "spread": -485,
+                            "gibsonized": false
+                        },
+                        {
+                            "player_id": "edafc0e29dd6e276c291aefb3823c5e2:Heidi Kujac",
+                            "wins": 0,
+                            "losses": 5,
+                            "draws": 0,
+                            "spread": -560,
+                            "gibsonized": false
+                        }
+                    ]
+                }
+            },
+            "pairing_map": {
+                "0": {
+                    "players": [
+                        0,
+                        9
+                    ],
+                    "round": 0,
+                    "games": [
+                        {
+                            "scores": [
+                                508,
+                                230
+                            ],
+                            "results": [
+                                "WIN",
+                                "LOSS"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "WIN",
+                        "LOSS"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "1": {
+                    "players": [
+                        8,
+                        1
+                    ],
+                    "round": 0,
+                    "games": [
+                        {
+                            "scores": [
+                                356,
+                                442
+                            ],
+                            "results": [
+                                "LOSS",
+                                "WIN"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "LOSS",
+                        "WIN"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "10": {
+                    "players": [
+                        0,
+                        1
+                    ],
+                    "round": 2,
+                    "games": [
+                        {
+                            "scores": [
+                                382,
+                                328
+                            ],
+                            "results": [
+                                "WIN",
+                                "LOSS"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "WIN",
+                        "LOSS"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "11": {
+                    "players": [
+                        9,
+                        2
+                    ],
+                    "round": 2,
+                    "games": [
+                        {
+                            "scores": [
+                                327,
+                                389
+                            ],
+                            "results": [
+                                "LOSS",
+                                "WIN"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "LOSS",
+                        "WIN"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "12": {
+                    "players": [
+                        3,
+                        8
+                    ],
+                    "round": 2,
+                    "games": [
+                        {
+                            "scores": [
+                                428,
+                                385
+                            ],
+                            "results": [
+                                "WIN",
+                                "LOSS"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "WIN",
+                        "LOSS"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "13": {
+                    "players": [
+                        4,
+                        7
+                    ],
+                    "round": 2,
+                    "games": [
+                        {
+                            "scores": [
+                                419,
+                                370
+                            ],
+                            "results": [
+                                "WIN",
+                                "LOSS"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "WIN",
+                        "LOSS"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "14": {
+                    "players": [
+                        6,
+                        5
+                    ],
+                    "round": 2,
+                    "games": [
+                        {
+                            "scores": [
+                                478,
+                                388
+                            ],
+                            "results": [
+                                "WIN",
+                                "LOSS"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "WIN",
+                        "LOSS"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "15": {
+                    "players": [
+                        7,
+                        0
+                    ],
+                    "round": 3,
+                    "games": [
+                        {
+                            "scores": [
+                                316,
+                                478
+                            ],
+                            "results": [
+                                "LOSS",
+                                "WIN"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "LOSS",
+                        "WIN"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "16": {
+                    "players": [
+                        1,
+                        6
+                    ],
+                    "round": 3,
+                    "games": [
+                        {
+                            "scores": [
+                                370,
+                                478
+                            ],
+                            "results": [
+                                "LOSS",
+                                "WIN"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "LOSS",
+                        "WIN"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "17": {
+                    "players": [
+                        2,
+                        5
+                    ],
+                    "round": 3,
+                    "games": [
+                        {
+                            "scores": [
+                                379,
+                                224
+                            ],
+                            "results": [
+                                "WIN",
+                                "LOSS"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "WIN",
+                        "LOSS"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "18": {
+                    "players": [
+                        4,
+                        3
+                    ],
+                    "round": 3,
+                    "games": [
+                        {
+                            "scores": [
+                                348,
+                                424
+                            ],
+                            "results": [
+                                "LOSS",
+                                "WIN"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "LOSS",
+                        "WIN"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "19": {
+                    "players": [
+                        9,
+                        8
+                    ],
+                    "round": 3,
+                    "games": [
+                        {
+                            "scores": [
+                                302,
+                                373
+                            ],
+                            "results": [
+                                "LOSS",
+                                "WIN"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "LOSS",
+                        "WIN"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "2": {
+                    "players": [
+                        7,
+                        2
+                    ],
+                    "round": 0,
+                    "games": [
+                        {
+                            "scores": [
+                                400,
+                                449
+                            ],
+                            "results": [
+                                "LOSS",
+                                "WIN"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "LOSS",
+                        "WIN"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "20": {
+                    "players": [
+                        3,
+                        0
+                    ],
+                    "round": 4,
+                    "games": [
+                        {
+                            "scores": [
+                                387,
+                                449
+                            ],
+                            "results": [
+                                "LOSS",
+                                "WIN"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "LOSS",
+                        "WIN"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "21": {
+                    "players": [
+                        1,
+                        2
+                    ],
+                    "round": 4,
+                    "games": [
+                        {
+                            "scores": [
+                                471,
+                                302
+                            ],
+                            "results": [
+                                "WIN",
+                                "LOSS"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "WIN",
+                        "LOSS"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "22": {
+                    "players": [
+                        4,
+                        9
+                    ],
+                    "round": 4,
+                    "games": [
+                        {
+                            "scores": [
+                                391,
+                                355
+                            ],
+                            "results": [
+                                "WIN",
+                                "LOSS"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "WIN",
+                        "LOSS"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "23": {
+                    "players": [
+                        8,
+                        5
+                    ],
+                    "round": 4,
+                    "games": [
+                        {
+                            "scores": [
+                                365,
+                                341
+                            ],
+                            "results": [
+                                "WIN",
+                                "LOSS"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "WIN",
+                        "LOSS"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "24": {
+                    "players": [
+                        6,
+                        7
+                    ],
+                    "round": 4,
+                    "games": [
+                        {
+                            "scores": [
+                                400,
+                                418
+                            ],
+                            "results": [
+                                "LOSS",
+                                "WIN"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "LOSS",
+                        "WIN"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "25": {
+                    "players": [
+                        0,
+                        1
+                    ],
+                    "round": 5,
+                    "games": [
+                        {
+                            "scores": [
+                                455,
+                                349
+                            ],
+                            "results": [
+                                "WIN",
+                                "LOSS"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "WIN",
+                        "LOSS"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "26": {
+                    "players": [
+                        6,
+                        3
+                    ],
+                    "round": 5,
+                    "games": [
+                        {
+                            "scores": [
+                                0,
+                                0
+                            ],
+                            "results": [
+                                "NO_RESULT",
+                                "NO_RESULT"
+                            ],
+                            "game_end_reason": "NONE",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "NO_RESULT",
+                        "NO_RESULT"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "27": {
+                    "players": [
+                        2,
+                        7
+                    ],
+                    "round": 5,
+                    "games": [
+                        {
+                            "scores": [
+                                0,
+                                0
+                            ],
+                            "results": [
+                                "NO_RESULT",
+                                "NO_RESULT"
+                            ],
+                            "game_end_reason": "NONE",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "NO_RESULT",
+                        "NO_RESULT"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "28": {
+                    "players": [
+                        4,
+                        8
+                    ],
+                    "round": 5,
+                    "games": [
+                        {
+                            "scores": [
+                                0,
+                                0
+                            ],
+                            "results": [
+                                "NO_RESULT",
+                                "NO_RESULT"
+                            ],
+                            "game_end_reason": "NONE",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "NO_RESULT",
+                        "NO_RESULT"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "29": {
+                    "players": [
+                        9,
+                        5
+                    ],
+                    "round": 5,
+                    "games": [
+                        {
+                            "scores": [
+                                0,
+                                0
+                            ],
+                            "results": [
+                                "NO_RESULT",
+                                "NO_RESULT"
+                            ],
+                            "game_end_reason": "NONE",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "NO_RESULT",
+                        "NO_RESULT"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "3": {
+                    "players": [
+                        3,
+                        6
+                    ],
+                    "round": 0,
+                    "games": [
+                        {
+                            "scores": [
+                                322,
+                                344
+                            ],
+                            "results": [
+                                "LOSS",
+                                "WIN"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "LOSS",
+                        "WIN"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "4": {
+                    "players": [
+                        5,
+                        4
+                    ],
+                    "round": 0,
+                    "games": [
+                        {
+                            "scores": [
+                                294,
+                                393
+                            ],
+                            "results": [
+                                "LOSS",
+                                "WIN"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "LOSS",
+                        "WIN"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "5": {
+                    "players": [
+                        5,
+                        0
+                    ],
+                    "round": 1,
+                    "games": [
+                        {
+                            "scores": [
+                                298,
+                                490
+                            ],
+                            "results": [
+                                "LOSS",
+                                "WIN"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "LOSS",
+                        "WIN"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "6": {
+                    "players": [
+                        1,
+                        4
+                    ],
+                    "round": 1,
+                    "games": [
+                        {
+                            "scores": [
+                                394,
+                                314
+                            ],
+                            "results": [
+                                "WIN",
+                                "LOSS"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "WIN",
+                        "LOSS"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "7": {
+                    "players": [
+                        2,
+                        3
+                    ],
+                    "round": 1,
+                    "games": [
+                        {
+                            "scores": [
+                                396,
+                                462
+                            ],
+                            "results": [
+                                "LOSS",
+                                "WIN"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "LOSS",
+                        "WIN"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "8": {
+                    "players": [
+                        6,
+                        9
+                    ],
+                    "round": 1,
+                    "games": [
+                        {
+                            "scores": [
+                                389,
+                                351
+                            ],
+                            "results": [
+                                "WIN",
+                                "LOSS"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "WIN",
+                        "LOSS"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                },
+                "9": {
+                    "players": [
+                        8,
+                        7
+                    ],
+                    "round": 1,
+                    "games": [
+                        {
+                            "scores": [
+                                377,
+                                366
+                            ],
+                            "results": [
+                                "WIN",
+                                "LOSS"
+                            ],
+                            "game_end_reason": "STANDARD",
+                            "id": ""
+                        }
+                    ],
+                    "outcomes": [
+                        "WIN",
+                        "LOSS"
+                    ],
+                    "ready_states": [
+                        "",
+                        ""
+                    ]
+                }
+            },
+            "controls": {
+                "id": "yAy9RjwQz6CkmFwBYThZ85",
+                "division": "NWL",
+                "game_request": {
+                    "lexicon": "NWL20",
+                    "rules": {
+                        "board_layout_name": "CrosswordGame",
+                        "letter_distribution_name": "english",
+                        "variant_name": "classic"
+                    },
+                    "initial_time_seconds": 1500,
+                    "increment_seconds": 0,
+                    "challenge_rule": "DOUBLE",
+                    "game_mode": "REAL_TIME",
+                    "rating_mode": "RATED",
+                    "request_id": "",
+                    "max_overtime_minutes": 1,
+                    "player_vs_bot": false,
+                    "original_request_id": "",
+                    "bot_type": "HASTY_BOT"
+                },
+                "suspended_result": "FORFEIT_LOSS",
+                "suspended_spread": -50,
+                "auto_start": false,
+                "spread_cap": 0,
+                "gibsonize": true,
+                "gibson_spread": 500,
+                "minimum_placement": 2,
+                "maximum_bye_placement": 0
+            },
+            "round_controls": [
+                {
+                    "pairing_method": "TEAM_ROUND_ROBIN",
+                    "first_method": "AUTOMATIC_FIRST",
+                    "games_per_round": 1,
+                    "round": 0,
+                    "factor": 0,
+                    "initial_fontes": 0,
+                    "max_repeats": 0,
+                    "allow_over_max_repeats": false,
+                    "repeat_relative_weight": 0,
+                    "win_difference_relative_weight": 0
+                },
+                {
+                    "pairing_method": "TEAM_ROUND_ROBIN",
+                    "first_method": "AUTOMATIC_FIRST",
+                    "games_per_round": 1,
+                    "round": 1,
+                    "factor": 0,
+                    "initial_fontes": 0,
+                    "max_repeats": 0,
+                    "allow_over_max_repeats": false,
+                    "repeat_relative_weight": 0,
+                    "win_difference_relative_weight": 0
+                },
+                {
+                    "pairing_method": "TEAM_ROUND_ROBIN",
+                    "first_method": "AUTOMATIC_FIRST",
+                    "games_per_round": 1,
+                    "round": 2,
+                    "factor": 0,
+                    "initial_fontes": 0,
+                    "max_repeats": 0,
+                    "allow_over_max_repeats": false,
+                    "repeat_relative_weight": 0,
+                    "win_difference_relative_weight": 0
+                },
+                {
+                    "pairing_method": "TEAM_ROUND_ROBIN",
+                    "first_method": "AUTOMATIC_FIRST",
+                    "games_per_round": 1,
+                    "round": 3,
+                    "factor": 0,
+                    "initial_fontes": 0,
+                    "max_repeats": 0,
+                    "allow_over_max_repeats": false,
+                    "repeat_relative_weight": 0,
+                    "win_difference_relative_weight": 0
+                },
+                {
+                    "pairing_method": "TEAM_ROUND_ROBIN",
+                    "first_method": "AUTOMATIC_FIRST",
+                    "games_per_round": 1,
+                    "round": 4,
+                    "factor": 0,
+                    "initial_fontes": 0,
+                    "max_repeats": 0,
+                    "allow_over_max_repeats": false,
+                    "repeat_relative_weight": 0,
+                    "win_difference_relative_weight": 0
+                },
+                {
+                    "pairing_method": "FACTOR",
+                    "first_method": "AUTOMATIC_FIRST",
+                    "games_per_round": 1,
+                    "round": 5,
+                    "factor": 2,
+                    "initial_fontes": 0,
+                    "max_repeats": 1,
+                    "allow_over_max_repeats": true,
+                    "repeat_relative_weight": 4,
+                    "win_difference_relative_weight": 1
+                },
+                {
+                    "pairing_method": "KING_OF_THE_HILL",
+                    "first_method": "AUTOMATIC_FIRST",
+                    "games_per_round": 1,
+                    "round": 6,
+                    "factor": 0,
+                    "initial_fontes": 0,
+                    "max_repeats": 0,
+                    "allow_over_max_repeats": false,
+                    "repeat_relative_weight": 0,
+                    "win_difference_relative_weight": 0
+                }
+            ],
+            "current_round": 5
+        }
+    },
+    "started": true
+}
