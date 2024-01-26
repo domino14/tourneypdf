@@ -2,3 +2,5 @@ pycairo
 webcolors
 requests
 qrcode[pil]
+flet
+pyinstaller
