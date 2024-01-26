@@ -5,7 +5,7 @@ import qrcode
 
 import cairo
 import webcolors
-from gooey import Gooey, local_resource_path
+import flet as ft
 
 from fetch_tourney import get_tournament
 
@@ -307,56 +307,58 @@ class ScorecardCreator:
             surface.finish()
 
 
-@Gooey(
-    program_name="Tournament Manager for Woogles",
-    image_dir=local_resource_path("images"),
-)
-def main():
-    parser = argparse.ArgumentParser(
-        prog="gen",
-        description="Generates physical scorecards for Woogles tournaments",
-    )
+def main(page: ft.Page):
 
-    parser.add_argument(
-        "tid_or_file",
-        help="Internal Tournament ID (see the bottom of Woogles Director tools)",
-    )  # positional argument
-    parser.add_argument(
-        "-o", "--opponents", action="store_true", help="Show opponents on scorecard"
-    )
-    parser.add_argument(
-        "-s",
-        "--seeds",
-        action="store_true",
-        help="Show player numbers/seeds on scorecard",
-    )
-    parser.add_argument(
-        "-q", "--qrcode", action="store_true", help="Show QR code on scorecard"
-    )
-    args = parser.parse_args()
+    page.title = "Woogles Tournament Manager"
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    dlg = ft.AlertDialog()
 
-    tid = args.tid_or_file
-    if tid.endswith(".json"):
-        with open(tid) as f:
-            tourney = json.load(f)
-    else:
-        tourney = get_tournament(tid)
-    # print(json.dumps(tourney))
-    creator = ScorecardCreator(tourney, args.opponents, args.seeds, args.qrcode)
-    success = False
-    while success is False:
+    def generate_scorecard(e):
         try:
-            creator.gen_scorecards()
-        except URLNotUniqueException:
-            creator.reset()
-            creator.url_uniqueness_trunc += 1
-            print(
-                "Could not create unique URL, trying new trunc length",
-                creator.url_uniqueness_trunc,
-            )
-        else:
-            success = True
+            tourney = get_tournament(tournament_url.value)
+        except Exception as e:
+            page.dialog = dlg
+            dlg.open = True
+            dlg.title = ft.Text("Error")
+            dlg.content = ft.Text(str(e))
+            page.update()
+            return
+
+        creator = ScorecardCreator(
+            tourney, show_opps.value, show_seeds.value, show_qrcode.value
+        )
+        success = False
+        while success is False:
+            try:
+                creator.gen_scorecards()
+            except URLNotUniqueException:
+                creator.reset()
+                creator.url_uniqueness_trunc += 1
+                print(
+                    "Could not create unique URL, trying new trunc length",
+                    creator.url_uniqueness_trunc,
+                )
+            else:
+                success = True
+                page.dialog = dlg
+                dlg.open = True
+                dlg.title = ft.Text("Success")
+                dlg.content = ft.Text(
+                    "Your scorecards have been generated. Please check the folder this program is in for your PDF files."
+                )
+                page.update()
+
+    tournament_url = ft.TextField(
+        label="Tournament URL",
+        autofocus=True,
+        hint_text="https://woogles.io/tournament/mytourney",
+    )
+    show_opps = ft.Checkbox(label="Show opponents on scorecard")
+    show_seeds = ft.Checkbox(label="Show player numbers / seeds on scorecard")
+    show_qrcode = ft.Checkbox(label="Show QR code on scorecard")
+    page.add(tournament_url, show_opps, show_seeds, show_qrcode)
+    page.add(ft.ElevatedButton("Generate scorecards", on_click=generate_scorecard))
 
 
 if __name__ == "__main__":
-    main()
+    ft.app(target=main, assets_dir="assets")

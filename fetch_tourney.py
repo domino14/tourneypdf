@@ -3,21 +3,39 @@ import requests
 import json
 
 
-def get_tournament(id):
-    print("get tourney with id", id)
-    url = "https://woogles.io/twirp/tournament_service.TournamentService/GetTournament"
-    t = requests.post(
-        url,
-        headers={"content-type": "application/json"},
-        data=json.dumps({"id": id}),
-    )
-    url = "https://woogles.io/twirp/tournament_service.TournamentService/GetTournamentMetadata"
+class FetchTourneyError(Exception):
+    pass
+
+
+def get_tournament(url: str):
+    print("get tourney with url", url)
+    slug = None
+    for prefix in [
+        "https://woogles.io",
+        "https://www.woogles.io",
+        "www.woogles.io",
+        "woogles.io",
+    ]:
+        if url.startswith(prefix):
+            slug = url[len(prefix) :]
+    if not slug:
+        raise FetchTourneyError("Bad URL format")
+
     tm = requests.post(
-        url,
+        "https://woogles.io/twirp/tournament_service.TournamentService/GetTournamentMetadata",
         headers={"content-type": "application/json"},
-        data=json.dumps({"id": id}),
+        data=json.dumps({"slug": slug}),
     )
-    # print(json.dumps(t.json()))
+    if tm.status_code != 200:
+        raise FetchTourneyError("Error fetching metadata: " + str(tm.status_code))
+
+    tid = tm.json()["metadata"]["id"]
+    t = requests.post(
+        "https://woogles.io/twirp/tournament_service.TournamentService/GetTournament",
+        headers={"content-type": "application/json"},
+        data=json.dumps({"id": tid}),
+    )
+
     return {"t": t.json(), "meta": tm.json()}
 
 
