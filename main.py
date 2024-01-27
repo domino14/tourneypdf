@@ -1,6 +1,7 @@
 import argparse
 import json
 import math
+import os
 import qrcode
 
 import cairo
@@ -73,6 +74,9 @@ class ScorecardCreator:
 
     def reset(self):
         self.qrcode_urls = set()
+
+    def set_output_path(self, path):
+        self.output_path = path
 
     def place_qr_code(self, ctx, url):
         self.qrcode_urls.add(url)
@@ -286,7 +290,7 @@ class ScorecardCreator:
         for divname, div in self.tourney["t"]["divisions"].items():
             nrounds = len(div["round_controls"])
             skip = 2 if nrounds <= 8 else 1
-            fname = f"{divname}_scorecards.pdf"
+            fname = os.path.join(self.output_path, f"{divname}_scorecards.pdf")
             # 8.5 x 11 inches in points (612 x 792)
             surface = cairo.PDFSurface(fname, 612, 792)
             ctx = cairo.Context(surface)
@@ -313,7 +317,18 @@ def main(page: ft.Page):
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     dlg = ft.AlertDialog()
 
-    def generate_scorecard(e):
+    def generate_scorecard(evt: ft.FilePickerResultEvent):
+        print("Selected directory:", evt.path)
+        if evt.path is None:
+            page.dialog = dlg
+            dlg.open = True
+            dlg.title = ft.Text("Error")
+            dlg.content = ft.Text(
+                "You must choose a directory to save your PDF files to"
+            )
+            page.update()
+            return
+
         try:
             tourney = get_tournament(tournament_url.value)
         except Exception as e:
@@ -327,6 +342,7 @@ def main(page: ft.Page):
         creator = ScorecardCreator(
             tourney, show_opps.value, show_seeds.value, show_qrcode.value
         )
+        creator.set_output_path(evt.path)
         success = False
         while success is False:
             try:
@@ -344,7 +360,7 @@ def main(page: ft.Page):
                 dlg.open = True
                 dlg.title = ft.Text("Success")
                 dlg.content = ft.Text(
-                    "Your scorecards have been generated. Please check the folder this program is in for your PDF files."
+                    "Your scorecards have been generated and saved in your selected folder."
                 )
                 page.update()
 
@@ -357,7 +373,15 @@ def main(page: ft.Page):
     show_seeds = ft.Checkbox(label="Show player numbers / seeds on scorecard")
     show_qrcode = ft.Checkbox(label="Show QR code on scorecard")
     page.add(tournament_url, show_opps, show_seeds, show_qrcode)
-    page.add(ft.ElevatedButton("Generate scorecards", on_click=generate_scorecard))
+    page.add(
+        ft.ElevatedButton(
+            "Choose a folder to save scorecards to",
+            on_click=lambda _: file_picker.get_directory_path(),
+        )
+    )
+    file_picker = ft.FilePicker(on_result=generate_scorecard)
+    page.overlay.append(file_picker)
+    page.update()
 
 
 if __name__ == "__main__":
