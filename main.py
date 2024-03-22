@@ -9,6 +9,7 @@ import webcolors
 import flet as ft
 
 from fetch_tourney import get_tournament
+from stats import stats
 
 
 class URLNotUniqueException(Exception):
@@ -311,6 +312,31 @@ class ScorecardCreator:
             surface.finish()
 
 
+def beautifulize(tstats):
+    statsstr = ""
+    for div in tstats:
+        statsstr += f"Division {div}:\n"
+        statsstr += "\n"
+        statsstr += "Biggest upsets:\n"
+        for i in range(min(10, len(tstats[div]["upsets"]))):
+            u = tstats[div]["upsets"][i]
+            statsstr += (
+                f"Round {u[1]+1}: {u[0]} rating points; {u[2][0]} beat {u[2][1]}\n"
+            )
+        statsstr += "\nHigh score:\n"
+        hs = tstats[div]["highscore"]
+        statsstr += f"Round {hs[2]+1}: {hs[1]} scored {hs[0]} points\n"
+        statsstr += "\nLow win:\n"
+        lw = tstats[div]["lowwin"]
+        statsstr += f"Round {lw[2]+1}: {lw[1]} won with {lw[0]} points\n"
+        statsstr += "\nHighest average scores:\n"
+        for i in range(min(3, len(tstats[div]["avgscores"]))):
+            a = tstats[div]["avgscores"][i]
+            statsstr += f"{a[0]}: {a[1]:.2f}\n"
+        statsstr += "\n"
+    return statsstr
+
+
 def main(page: ft.Page):
 
     page.title = "Woogles Tournament Manager"
@@ -364,6 +390,27 @@ def main(page: ft.Page):
                 )
                 page.update()
 
+    def generate_stats(evt):
+        print("generating stats", evt)
+        try:
+            tourney = get_tournament(tournament_url.value)
+        except Exception as e:
+            page.dialog = dlg
+            dlg.open = True
+            dlg.title = ft.Text("Error")
+            dlg.content = ft.Text(str(e))
+            page.update()
+            return
+
+        page.dialog = dlg
+        dlg.open = True
+        dlg.title = ft.Text("Statistics")
+        tstats = stats(tourney["t"])
+        lv = ft.Column(width=600, scroll=ft.ScrollMode.AUTO)
+        lv.controls.append(ft.Text(beautifulize(tstats)))
+        dlg.content = lv
+        page.update()
+
     tournament_url = ft.TextField(
         label="Tournament URL",
         autofocus=True,
@@ -381,6 +428,11 @@ def main(page: ft.Page):
     )
     file_picker = ft.FilePicker(on_result=generate_scorecard)
     page.overlay.append(file_picker)
+    page.add(
+        ft.ElevatedButton(
+            "Generate statistics for this tournament", on_click=generate_stats
+        )
+    )
     page.update()
 
 
