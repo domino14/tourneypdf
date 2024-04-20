@@ -11,6 +11,7 @@ def stats(tourney):
         upsets = []
         highest_score = [-100000, None, None]
         lowest_win = [100000, None, None]
+        highest_loss = [-100000, None, None]
         total_scores = {}
         for _, pairing in pairings.items():
             scores = pairing["games"][0]["scores"]
@@ -40,6 +41,8 @@ def stats(tourney):
                         highest_score = [sc, players[idx][0], rd]
                     if results[idx] == "WIN" and sc < lowest_win[0]:
                         lowest_win = [sc, players[idx][0], rd]
+                    if results[idx] == "LOSS" and sc > highest_loss[0]:
+                        highest_loss = [sc, players[idx][0], rd]
                     if players[idx][0] not in total_scores:
                         total_scores[players[idx][0]] = [sc]
                     else:
@@ -67,6 +70,7 @@ def stats(tourney):
             "highscore": highest_score,
             "lowwin": lowest_win,
             "avgscores": sorted_average_scores,
+            "highloss": highest_loss,
         }
         print("Average Scores", sorted_average_scores)
     return sd

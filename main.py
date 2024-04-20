@@ -326,6 +326,9 @@ def beautifulize(tstats):
         statsstr += "\nHigh score:\n"
         hs = tstats[div]["highscore"]
         statsstr += f"Round {hs[2]+1}: {hs[1]} scored {hs[0]} points\n"
+        statsstr += "\nHigh loss:\n"
+        hl = tstats[div]["highloss"]
+        statsstr += f"Round {hl[2]+1}: {hl[1]} lost with {hl[0]} points\n"
         statsstr += "\nLow win:\n"
         lw = tstats[div]["lowwin"]
         statsstr += f"Round {lw[2]+1}: {lw[1]} won with {lw[0]} points\n"
