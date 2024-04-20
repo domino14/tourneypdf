@@ -7,7 +7,7 @@ def stats(tourney):
     for div in tourney["divisions"]:
         # Calculate biggest upset.
         players = tourney["divisions"][div]["players"]["persons"]
-        pairings = tourney["divisions"][div]["pairing_map"]
+        pairings = tourney["divisions"][div]["pairingMap"]
         upsets = []
         highest_score = [-100000, None, None]
         lowest_win = [100000, None, None]
@@ -20,7 +20,7 @@ def stats(tourney):
                 player_by_idx(tourney, div, pairing["players"][0]),
                 player_by_idx(tourney, div, pairing["players"][1]),
             ]
-            rd = pairing["round"]
+            rd = pairing.get("round", 0)
             if results[0] == "WIN":
                 winner = players[0]
                 loser = players[1]

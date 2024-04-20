@@ -43,6 +43,22 @@ def format_color(*color, **kwargs):  # color is a tuple
     return normalized_rgb
 
 
+def to_spread(i):
+    if i < 0:
+        return str(i)
+    return "+" + str(i)
+
+
+def wl(standing):
+    wins = standing.get("wins", 0) + standing.get("draws", 0) / 2
+    losses = standing.get("losses", 0) + standing.get("draws", 0) / 2
+    if int(wins) == wins:
+        wins = int(wins)
+    if int(losses) == losses:
+        losses = int(losses)
+    return str(wins), str(losses)
+
+
 def create_simple_qr(data, error_correction=qrcode.constants.ERROR_CORRECT_L):
     # Instantiate QRCode object with desired settings
     qr = qrcode.QRCode(
@@ -105,7 +121,7 @@ class ScorecardCreator:
 
     def draw_name_and_tourney_header(self, ctx, player, pidx, tourney_name):
         player_name = player["id"].split(":")[1]
-        player_rating = player["rating"]
+        player_rating = player.get("rating", 0)
 
         black = format_color("black")
         ctx.new_path()
@@ -142,11 +158,12 @@ class ScorecardCreator:
         ctx.show_text(f"{player_name}  ({player_rating})")
         ctx.set_font_size(12)
 
-    def draw_known_pairings(self, ctx, div, pidx, rect_ht, nrounds):
+    def draw_known_pairings(self, ctx, div, pidx, rect_ht, nrounds, fields):
         ctx.set_font_size(12)
-        for k, v in div["pairing_map"].items():
+        pid = div["players"]["persons"][pidx]["id"]
+        for k, v in div["pairingMap"].items():
             if pidx in v["players"]:
-                rd = v["round"]
+                rd = v.get("round", 0)
                 first = True
                 opp = None
                 opp_name = None
@@ -179,6 +196,42 @@ class ScorecardCreator:
                 else:
                     ctx.arc(70, y, 8, 0, 2 * math.pi)
                 ctx.stroke()
+                # Show scores if they exist
+                last_field = len(fields)
+                theirscorey = y - 8
+                ourscorey = y - 8
+                if rd != 0:
+                    theirscorey = y - 15
+                if len(v.get("outcomes")) == 2 and v["outcomes"][0] in (
+                    "LOSS",
+                    "WIN",
+                    "DRAW",
+                ):
+                    ctx.move_to(fields[last_field - 3][0] + 20, ourscorey)
+                    myscore = v["games"][0]["scores"][0]
+                    theirscore = v["games"][0]["scores"][1]
+                    if not first:
+                        myscore, theirscore = theirscore, myscore
+                    ctx.show_text(str(myscore))
+
+                    ctx.move_to(fields[last_field - 2][0] + 20, theirscorey)
+                    ctx.show_text(str(theirscore))
+                    ctx.move_to(fields[last_field - 1][0] + 10, theirscorey)
+                    ctx.show_text(to_spread(myscore - theirscore))
+                    # Get cumulative spread and record from standings object.
+                    starr = div["standings"][str(rd)]["standings"]
+                    for st in starr:
+                        if st["playerId"] != pid:
+                            continue
+                        if rd > 0:
+                            ctx.move_to(fields[last_field - 1][0] + 10, y + 5)
+                            ctx.show_text(to_spread(st["spread"]))
+                        wins, losses = wl(st)
+                        ctx.move_to(fields[last_field - 5][0] + 5, ourscorey)
+                        ctx.show_text(wins)
+                        ctx.move_to(fields[last_field - 4][0] + 5, ourscorey)
+                        ctx.show_text(losses)
+
         ctx.new_path()
 
     def draw_row(self, ctx, i, rect_ht, nrounds, fields):
@@ -271,7 +324,7 @@ class ScorecardCreator:
 
         # Draw known pairings
         if self.show_opponents:
-            self.draw_known_pairings(ctx, div, pidx, rect_ht, nrounds)
+            self.draw_known_pairings(ctx, div, pidx, rect_ht, nrounds, fields)
 
     def gen_scorecard(self, surface, ctx, div, nrounds, meta, p1, p2):
         if p1 != p2:
@@ -288,8 +341,9 @@ class ScorecardCreator:
         surface.flush()
 
     def gen_scorecards(self):
+        print(json.dumps(self.tourney))
         for divname, div in self.tourney["t"]["divisions"].items():
-            nrounds = len(div["round_controls"])
+            nrounds = len(div["roundControls"])
             skip = 2 if nrounds <= 8 else 1
             fname = os.path.join(self.output_path, f"{divname}_scorecards.pdf")
             # 8.5 x 11 inches in points (612 x 792)
@@ -409,7 +463,7 @@ def main(page: ft.Page):
         dlg.open = True
         dlg.title = ft.Text("Statistics")
         tstats = stats(tourney["t"])
-        lv = ft.Column(width=600, scroll=ft.ScrollMode.AUTO)
+        lv = ft.Column(width=800, scroll=ft.ScrollMode.AUTO)
         lv.controls.append(ft.Text(beautifulize(tstats)))
         dlg.content = lv
         page.update()

@@ -8,7 +8,6 @@ class FetchTourneyError(Exception):
 
 
 def get_tournament(url: str):
-    print("get tourney with url", url)
     slug = None
     for prefix in [
         "https://woogles.io",
@@ -22,7 +21,7 @@ def get_tournament(url: str):
         raise FetchTourneyError("Bad URL format")
 
     tm = requests.post(
-        "https://woogles.io/twirp/tournament_service.TournamentService/GetTournamentMetadata",
+        "https://woogles.io/api/tournament_service.TournamentService/GetTournamentMetadata",
         headers={"content-type": "application/json"},
         data=json.dumps({"slug": slug}),
     )
@@ -31,7 +30,7 @@ def get_tournament(url: str):
 
     tid = tm.json()["metadata"]["id"]
     t = requests.post(
-        "https://woogles.io/twirp/tournament_service.TournamentService/GetTournament",
+        "https://woogles.io/api/tournament_service.TournamentService/GetTournament",
         headers={"content-type": "application/json"},
         data=json.dumps({"id": tid}),
     )
@@ -41,4 +40,4 @@ def get_tournament(url: str):
 
 def player_by_idx(tourney, div, idx):
     p = tourney["divisions"][div]["players"]["persons"][idx]
-    return p["id"].split(":")[1], p["rating"]
+    return p["id"].split(":")[1], p.get("rating", 0)
