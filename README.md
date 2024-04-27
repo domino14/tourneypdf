@@ -1,3 +1,7 @@
+# Archived
+
+This repo has been archived. The functionality in it has been moved directly to Woogles.io. It is here as a reference for how to use the API/etc.
+
 # tourneypdf
 
 A PDF generator for Scrabble tourneys. There must be an associated Woogles tournament.
